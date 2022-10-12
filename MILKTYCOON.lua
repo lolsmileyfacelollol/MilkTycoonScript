@@ -121,11 +121,15 @@ end)
 function PICKUPMILK()
 	for i,v in pairs(PlayersTycoon.Drops:GetChildren()) do
 		task.wait()
+		
+		if v.Name == "Cow5" then
+			v.Part.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
+		    v.HitBox.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
+		end
+		
 		if v:FindFirstChildOfClass("Part") then
 			local vp = v:FindFirstChildOfClass("Part")
-			if vp.Name == "Part" then
-				vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
-			end
+			vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
 		end
 	end
 end
