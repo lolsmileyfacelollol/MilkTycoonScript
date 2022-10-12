@@ -6,6 +6,7 @@ local window = ui.new({text="Milk Tycoon - Cj#9089"})
 local mainTab = window.new({text="main"})
 local pickupMilk = mainTab.new("Button", {text="Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
+local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
 local mouse = Players.LocalPlayer:GetMouse()
 
 local PlayersTycoon 
@@ -21,8 +22,6 @@ end
 
 --FLYING
 FLYING = false
-iyflyspeed = 2
-vehicleflyspeed = 4
 
 function sFLY(vfly)
 	repeat wait() until Players.LocalPlayer and Players.LocalPlayer.Character and Players.LocalPlayer.Character.HumanoidRootPart and Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
@@ -77,17 +76,17 @@ function sFLY(vfly)
 	end
 	flyKeyDown = mouse.KeyDown:Connect(function(KEY)
 		if KEY:lower() == 'w' then
-			CONTROL.F = (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.F = (vfly and FlySpeedSlider.value)
 		elseif KEY:lower() == 's' then
-			CONTROL.B = - (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.B = - (vfly and FlySpeedSlider.value)
 		elseif KEY:lower() == 'a' then
-			CONTROL.L = - (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.L = - (vfly and FlySpeedSlider.value)
 		elseif KEY:lower() == 'd' then 
-			CONTROL.R = (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.R = (vfly and FlySpeedSlider.value)
 		elseif KEY:lower() == 'e' then
-			CONTROL.Q = (vfly and vehicleflyspeed or iyflyspeed)*2
+			CONTROL.Q = (vfly and FlySpeedSlider.value)*2
 		elseif KEY:lower() == 'q' then
-			CONTROL.E = -(vfly and vehicleflyspeed or iyflyspeed)*2
+			CONTROL.E = -(vfly and FlySpeedSlider.value)*2
 		end
 		pcall(function() workspace.CurrentCamera.CameraType = Enum.CameraType.Track end)
 	end)
