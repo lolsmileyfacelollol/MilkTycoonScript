@@ -7,7 +7,7 @@ local mainTab = window.new({text="main"})
 local pickupMilk = mainTab.new("Button", {text="Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
-local autoPickupToggle = mainTab.new("Switch", {text ="Auto Pickup Milk"})
+local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local mouse = Players.LocalPlayer:GetMouse()
 
 local PlayersTycoon 
