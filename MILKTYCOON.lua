@@ -123,13 +123,13 @@ function PICKUPMILK()
 		task.wait()
 		
 		if v.Name == "Cow5" then
-			v.Part.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
-		    v.HitBox.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
+			v.Part.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,5,0)
+		    v.HitBox.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,5,0)
 		end
 		
 		if v:FindFirstChildOfClass("Part") then
 			local vp = v:FindFirstChildOfClass("Part")
-			vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
+			vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,5,0)
 		end
 	end
 end
