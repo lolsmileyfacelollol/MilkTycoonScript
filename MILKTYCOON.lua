@@ -4,7 +4,7 @@ local TweenService = game:GetService("TweenService")
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Singularity5490/rbimgui-2/main/rbimgui-2.lua"))()
 local window = ui.new({text="Milk Tycoon - Cj#9089"})
 local mainTab = window.new({text="main"})
-local pickupMilk = mainTab.new("Button", {text="QuickPickup Milk"})
+local pickupMilk = mainTab.new("Button", {text="Pickup Milk Once"})
 local ShowerInMilk = mainTab.new("Button", {text="Take a Milky shower"})
 --local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
@@ -140,17 +140,16 @@ function SHOWERMILK()
 		task.wait()
 
 		if v.Name == "Cow5" then
-			v.Part.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(0,5),10,math.random(0,5))
-			v.HitBox.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(0,5),10,math.random(0,5))
+			v.Part.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
+			v.HitBox.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
 		end
 
 		if v:FindFirstChildOfClass("Part") then
 			local vp = v:FindFirstChildOfClass("Part")
-			vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(0,5),10,math.random(0,5))
+			vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
 		end
 	end
 end
-
 --[[
 function AutoPickupMilk()
 	spawn(function()
