@@ -4,7 +4,7 @@ local TweenService = game:GetService("TweenService")
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Singularity5490/rbimgui-2/main/rbimgui-2.lua"))()
 local window = ui.new({text="Milk Tycoon - Cj#9089"})
 local mainTab = window.new({text="main"})
-local pickupMilk = mainTab.new("Button", {text="Pickup Milk Once"})
+local pickupMilk = mainTab.new("Button", {text="QuickPickup Milk"})
 local ShowerInMilk = mainTab.new("Button", {text="Take a Milky shower"})
 --local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
@@ -134,7 +134,6 @@ function PICKUPMILK()
 		end
 	end
 end
-
 function SHOWERMILK()
 	for i,v in pairs(PlayersTycoon.Drops:GetChildren()) do
 		task.wait()
