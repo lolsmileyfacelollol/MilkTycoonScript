@@ -133,10 +133,12 @@ function AutoPickupMilk()
 		end
 	end)
 end
+--[[
 autoPickupToggle.event:Connect(function(v)
 	AUTOPICKUP = v
 	AutoPickupMilk()
 end)
+]]
 pickupMilk.event:Connect(function()
 	PICKUPMILK()
 end)
