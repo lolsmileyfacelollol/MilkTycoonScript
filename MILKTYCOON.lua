@@ -9,23 +9,15 @@ local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
 local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local mouse = Players.LocalPlayer:GetMouse()
-
 local PlayersTycoon 
-
-
--- get tycoon
-
 for i,v in pairs(game:GetService("Workspace").Tycoons:GetChildren()) do
 	if v.Owner.Value == Players.LocalPlayer.Name then
 		PlayersTycoon = v
 		break
 	end
 end
-
 AUTOPICKUP = false
---FLYING
 FLYING = false
-
 function sFLY(vfly)
 	repeat wait() until Players.LocalPlayer and Players.LocalPlayer.Character and Players.LocalPlayer.Character.HumanoidRootPart and Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 	repeat wait() until mouse
@@ -110,7 +102,6 @@ function sFLY(vfly)
 	end)
 	FLY()
 end
-
 function NOFLY()
 	FLYING = false
 	if flyKeyDown or flyKeyUp then flyKeyDown:Disconnect() flyKeyUp:Disconnect() end
@@ -119,7 +110,6 @@ function NOFLY()
 	end
 	pcall(function() workspace.CurrentCamera.CameraType = Enum.CameraType.Custom end)
 end
-
 flyToggle.event:Connect(function(v)
 	if v then
 		Players.LocalPlayer.Character:SetPrimaryPartCFrame(Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0,0,60))
@@ -128,8 +118,6 @@ flyToggle.event:Connect(function(v)
 		NOFLY()
 	end
 end)
-
-
 function PICKUPMILK()
 	for i,v in pairs(PlayersTycoon.Drops:GetChildren()) do
 		task.wait()
@@ -137,7 +125,6 @@ function PICKUPMILK()
 		vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
 	end
 end
-
 function AutoPickupMilk()
 	spawn(function()
 		while AUTOPICKUP do
@@ -146,13 +133,10 @@ function AutoPickupMilk()
 		end
 	end)
 end
-
-
 autoPickupToggle.event:Connect(function(v)
 	AUTOPICKUP = v
 	AutoPickupMilk()
 end)
-
 pickupMilk.event:Connect(function()
 	PICKUPMILK()
 end)
