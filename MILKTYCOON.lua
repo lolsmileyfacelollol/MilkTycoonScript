@@ -125,6 +125,7 @@ function PICKUPMILK()
 		vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(0,1,0)
 	end
 end
+--[[
 function AutoPickupMilk()
 	spawn(function()
 		while AUTOPICKUP do
@@ -133,7 +134,7 @@ function AutoPickupMilk()
 		end
 	end)
 end
---[[
+
 autoPickupToggle.event:Connect(function(v)
 	AUTOPICKUP = v
 	AutoPickupMilk()
