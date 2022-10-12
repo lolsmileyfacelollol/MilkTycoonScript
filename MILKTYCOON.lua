@@ -5,9 +5,9 @@ local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Singularit
 local window = ui.new({text="Milk Tycoon - Cj#9089"})
 local mainTab = window.new({text="main"})
 local pickupMilk = mainTab.new("Button", {text="Pickup All Milk Once"})
+local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
-local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local mouse = Players.LocalPlayer:GetMouse()
 local PlayersTycoon 
 for i,v in pairs(game:GetService("Workspace").Tycoons:GetChildren()) do
