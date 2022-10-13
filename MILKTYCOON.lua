@@ -6,6 +6,7 @@ local window = ui.new({text="Milk Tycoon - Cj#9089"})
 local mainTab = window.new({text="main"})
 local pickupMilk = mainTab.new("Button", {text="QuickPickup Milk"})
 local ShowerInMilk = mainTab.new("Button", {text="Take a Milky shower"})
+local TpObbyWin = mainTab.new("Button", {text="Teleport to obby win area"})
 --local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
@@ -149,6 +150,13 @@ function SHOWERMILK()
 		end
 	end
 end
+
+local function TpArea(part)
+    for i = 0,1,0.1 do
+        task.wait()
+        Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame:Lerp(part.CFrame, i)
+    end
+end
 --[[
 function AutoPickupMilk()
 	spawn(function()
@@ -164,7 +172,9 @@ autoPickupToggle.event:Connect(function(v)
 	AutoPickupMilk()
 end)
 ]]
-
+TpObbyWin.event:Connect(function()
+	TpArea(game:GetService("Workspace").Obby.RewardPart)
+end)
 ShowerInMilk.event:Connect(function()
 	SHOWERMILK()
 end)
