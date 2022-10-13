@@ -154,7 +154,7 @@ end
 local function TpArea(part)
     for i = 0,1,0.1 do
         task.wait()
-        Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame:Lerp(part.CFrame, i)
+        Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame:Lerp(part.CFrame * CFrame.new(0,5,0), i)
     end
 end
 --[[
