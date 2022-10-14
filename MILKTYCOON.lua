@@ -164,8 +164,10 @@ function AutoPickupMilk()
 		until autoPickupToggle.off
 	end)
 end
-autoPickupToggle.event:Connect(function()
-	PICKUPMILK()
+autoPickupToggle.event:Connect(function(v)
+	if v then
+		PICKUPMILK()		
+	end
 end)		
 TpObbyWin.event:Connect(function()
 	TpArea(game:GetService("Workspace").Obby.RewardPart)
