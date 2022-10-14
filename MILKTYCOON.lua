@@ -161,6 +161,7 @@ end
 function AutoPickupMilk()
 	spawn(function()
 		repeat
+			task.wait()
 			PICKUPMILK()
 		until autoPickupToggle.off
 	end)
