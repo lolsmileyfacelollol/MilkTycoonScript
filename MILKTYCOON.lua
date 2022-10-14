@@ -7,7 +7,7 @@ local mainTab = window.new({text="main"})
 local pickupMilk = mainTab.new("Button", {text="QuickPickup Milk"})
 local ShowerInMilk = mainTab.new("Button", {text="Take a Milky shower"})
 local TpObbyWin = mainTab.new("Button", {text="Teleport to obby win area"})
---local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
+local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
 local mouse = Players.LocalPlayer:GetMouse()
@@ -152,15 +152,15 @@ function SHOWERMILK()
 end
 
 local function TpArea(part)
-    for i = 0,1,0.1 do
-        task.wait()
-        Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame:Lerp(part.CFrame * CFrame.new(0,5,0), i)
-    end
+	for i = 0,1,0.1 do
+		task.wait()
+		Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame:Lerp(part.CFrame * CFrame.new(0,5,0), i)
+	end
 end
---[[
+
 function AutoPickupMilk()
 	spawn(function()
-		while AUTOPICKUP do
+		while autoPickupToggle.on do
 			task.wait()
 			PICKUPMILK()
 		end
@@ -171,7 +171,7 @@ autoPickupToggle.event:Connect(function(v)
 	AUTOPICKUP = v
 	AutoPickupMilk()
 end)
-]]
+
 TpObbyWin.event:Connect(function()
 	TpArea(game:GetService("Workspace").Obby.RewardPart)
 end)
