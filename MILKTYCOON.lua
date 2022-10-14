@@ -12,7 +12,7 @@ local TpObbyWin = mainTab.new("Button", {text="Tp 2 obby win"})
 local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
-local Rejoin = mainTab.new("Button", {text="Rejoin Server (will need to re-execute script after)"})
+local Rejoin = mainTab.new("Button", {text="Rejoin Server (will need to re-execute script)"})
 local mouse = Players.LocalPlayer:GetMouse()
 local Playerlist = {}
 local ChosenMilkPlr = Players.LocalPlayer.Name
