@@ -2,16 +2,39 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Singularity5490/rbimgui-2/main/rbimgui-2.lua"))()
-local window = ui.new({text="Milk Tycoon - Cj#9089"})
-local mainTab = window.new({text="main"})
-local pickupMilk = mainTab.new("Button", {text="QuickPickup Milk"})
-local ShowerInMilk = mainTab.new("Button", {text="Take a Milky shower"})
-local TpObbyWin = mainTab.new("Button", {text="Teleport to obby win area"})
-local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup Milk"})
+local window = ui.new({text="Milk Tycoon Fucker - Cj#9089"})
+local mainTab = window.new({text="Main"})
+local TrollTab = window.new({text="Troll"})
+local Dropdown = TrollTab.new("Dropdown",{text="Player to shower"})
+local pickupMilk = mainTab.new("Button", {text="Quick-Pickup"})
+local ShowerInMilk = TrollTab.new("Button", {text="Give milky shower"})
+local TpObbyWin = mainTab.new("Button", {text="Tp 2 obby win"})
+local autoPickupToggle = mainTab.new("Switch", {text="Auto Pickup"})
 local flyToggle = mainTab.new("Switch", {text="fly"})
 local FlySpeedSlider = mainTab.new("Slider", {text="Fly Speed", min=1, max=99, value=1})
 local mouse = Players.LocalPlayer:GetMouse()
+local Playerlist = {}
+local ChosenMilkPlr = Players.LocalPlayer.Name
 local PlayersTycoon 
+
+Players.PlayerAdded:Connect(function(plr)
+	if not table.find(Playerlist, plr.Name) then
+		table.insert(Playerlist, plr.Name)
+		Dropdown.new(plr.Name)
+	end
+end)
+
+for i, v in pairs(Players:GetChildren()) do
+	if not table.find(Playerlist, v.Name) then
+		table.insert(Playerlist, v.Name)
+		Dropdown.new(v.Name)
+	end
+end
+
+Dropdown.event:Connect(function(v)
+	ChosenMilkPlr = v
+end)
+
 for i,v in pairs(game:GetService("Workspace").Tycoons:GetChildren()) do
 	if v.Owner.Value == Players.LocalPlayer.Name then
 		PlayersTycoon = v
@@ -135,17 +158,18 @@ function PICKUPMILK()
 	end
 end
 function SHOWERMILK()
+	local targ = Players[ChosenMilkPlr].Character.HumanoidRootPart
 	for i,v in pairs(PlayersTycoon.Drops:GetChildren()) do
 		task.wait()
-
+		if not targ then return end
 		if v.Name == "Cow5" then
-			v.Part.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
-			v.HitBox.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
+			v.Part.CFrame = targ.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
+			v.HitBox.CFrame = targ.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
 		end
 
 		if v:FindFirstChildOfClass("Part") then
 			local vp = v:FindFirstChildOfClass("Part")
-			vp.CFrame = Players.LocalPlayer.Character.HumanoidRootPart.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
+			vp.CFrame = targ.CFrame  * CFrame.new(math.random(-5,5),10,math.random(-5,5))
 		end
 	end
 end
