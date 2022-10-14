@@ -18,7 +18,6 @@ for i,v in pairs(game:GetService("Workspace").Tycoons:GetChildren()) do
 		break
 	end
 end
-AUTOPICKUP = false
 FLYING = false
 function sFLY(vfly)
 	repeat wait() until Players.LocalPlayer and Players.LocalPlayer.Character and Players.LocalPlayer.Character.HumanoidRootPart and Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
@@ -161,16 +160,10 @@ end
 function AutoPickupMilk()
 	spawn(function()
 		repeat
-			task.wait()
 			PICKUPMILK()
 		until autoPickupToggle.off
 	end)
 end
-
-autoPickupToggle.event:Connect(function(v)
-	AUTOPICKUP = v
-	--AutoPickupMilk()
-end)
 
 TpObbyWin.event:Connect(function()
 	TpArea(game:GetService("Workspace").Obby.RewardPart)
@@ -182,10 +175,10 @@ pickupMilk.event:Connect(function()
 	PICKUPMILK()
 end)
 
-
---[[
-while wait() do
-	if autoPickupToggle.on then
-		PICKUPMILK()
-	end
-end]]
+if PlayersTycoon.Drops then
+	PlayersTycoon.Drops.ChildAdded:Connect(function()
+		if autoPickupToggle.on then
+			PICKUPMILK()
+		end
+	end)
+end
