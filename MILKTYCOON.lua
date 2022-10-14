@@ -157,13 +157,6 @@ local function TpArea(part)
 	end
 end
 
-function AutoPickupMilk()
-	spawn(function()
-		repeat
-			PICKUPMILK()
-		until autoPickupToggle.off
-	end)
-end
 autoPickupToggle.event:Connect(function(v)
 	if v then
 		PICKUPMILK()		
