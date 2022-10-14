@@ -187,6 +187,7 @@ autoPickupToggle.event:Connect(function(v)
 		PICKUPMILK()		
 	end
 end)		
+
 TpObbyWin.event:Connect(function()
 	TpArea(game:GetService("Workspace").Obby.RewardPart)
 end)
