@@ -158,14 +158,13 @@ local function TpArea(part)
 	end
 end
 
---[[function AutoPickupMilk()
+function AutoPickupMilk()
 	spawn(function()
-		while autoPickupToggle.on do
-			task.wait()
-
-		end
+		repeat
+			PICKUPMILK()
+		until autoPickupToggle.off
 	end)
-end]]
+end
 
 autoPickupToggle.event:Connect(function(v)
 	AUTOPICKUP = v
@@ -183,9 +182,9 @@ pickupMilk.event:Connect(function()
 end)
 
 
-
+--[[
 while wait() do
 	if autoPickupToggle.on then
 		PICKUPMILK()
 	end
-end
+end]]
