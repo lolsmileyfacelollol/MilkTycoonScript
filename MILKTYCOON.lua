@@ -17,6 +17,7 @@ local mouse = Players.LocalPlayer:GetMouse()
 local Playerlist = {}
 local ChosenMilkPlr = Players.LocalPlayer.Name
 local PlayersTycoon 
+
 Players.PlayerAdded:Connect(function(plr)
 	if not table.find(Playerlist, plr.Name) then
 		table.insert(Playerlist, plr.Name)
